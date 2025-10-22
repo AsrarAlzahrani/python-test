@@ -12,6 +12,6 @@ jobs:
       contents: read
     steps:
       - name: Run GitHub Copilot Code Review
-        uses: github/copilot-code-review@v1
+        uses: github/copilot-code-review-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
