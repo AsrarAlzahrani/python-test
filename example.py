@@ -5,4 +5,7 @@ def calculate_discount(price, discount):
     return round(final_price, 2)
 
 print(calculate_discount(200, 10))
-print(calculate_discount(150, -5))
+print(calculate_discount(150, 5))
+print("code review test")
+
+
