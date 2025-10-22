@@ -6,4 +6,6 @@ def calculate_discount(price, discount):
 
 print(calculate_discount(200, 10))
 print(calculate_discount(150, 5))
+print("code review test")
+
 
