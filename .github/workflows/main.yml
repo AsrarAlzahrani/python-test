@@ -4,23 +4,25 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+permissions:
+  contents: read
+  pull-requests: write   # مهم جداً لكتابة تعليقات على الـ PR
+
 jobs:
   review:
-    permissions:
-      contents: read
-      pull-requests: write   
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Run PR Agent for code review
+      - name: Run PR Agent
         uses: qodo-ai/pr-agent@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          PR_AGENT_AUTO_REVIEW: "true"
-          PR_AGENT_REVIEW_COMMENT: "true"
+          PR_AGENT_AUTO_REVIEW: "true"        # شغّل المراجعة تلقائياً
+          PR_AGENT_REVIEW_COMMENT: "true"     # يكتب ملخّص في Conversation
+          PR_AGENT_REVIEW_INLINE: "true"      # يكتب تعليقات سطر-بسطر في Files changed
+          PR_AGENT_CODE_SUGGESTIONS: "true"   # يقترح باتشات (اختياري)
+
 
 
 
