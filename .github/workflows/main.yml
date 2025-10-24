@@ -8,12 +8,15 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Run PR Agent
+      - name: Run PR Agent for code review
         uses: qodo-ai/pr-agent@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           PR_AGENT_AUTO_REVIEW: "true"
           PR_AGENT_REVIEW_COMMENT: "true"
+
 
