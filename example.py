@@ -12,5 +12,3 @@ def calculate_discount(price, discount):
 # Example usage
 print(calculate_discount(200, 10))  # Expected output: 180.0
 print(calculate_discount(150, 5))   # Expected output: 142.5
-
-
