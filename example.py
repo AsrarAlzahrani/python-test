@@ -6,7 +6,7 @@ def calculate_discount(price, discount):
     if discount < 0 or discount > 100:
         return "Invalid discount"
 
-    # Intentional logic issue: applied discount twice to test PR Agent explanation
+
     final_price = price - (price * discount / 100)
     final_price = final_price - (price * discount / 100)
     return round(final_price, 2)
