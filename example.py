@@ -1,3 +1,4 @@
+# Trigger PR Agent test - check code explanation
 def calculate_discount(price, discount):
     """
     Calculate the final price after applying a discount.
