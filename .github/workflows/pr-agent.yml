@@ -14,12 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Run PR Agent for explanation
+      - name: Run PR Agent for Explanation
         uses: qodo-ai/pr-agent@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_AGENT_AUTO_REVIEW: "true"
           PR_AGENT_REVIEW_COMMENT: "true"
-          PR_AGENT_SUMMARY: "true"
-          PR_AGENT_MODE: "explain" # ← هذا السطر المهم
-
+          PR_AGENT_SUMMARY_COMMENT: "true"
+          PR_AGENT_INLINE_COMMENTS: "true"
+          PR_AGENT_MODE: "explain"    # ← هذا أهم سطر، هو اللي يخلي البوت يشرح الكود
