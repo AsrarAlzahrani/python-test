@@ -1,0 +1,26 @@
+name: PR Agent Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run PR Agent
+        uses: qodo-ai/pr-agent@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_REVIEW_MODE: "code_review"
+          PR_AGENT_AUTO_REVIEW: "true"
+          PR_AGENT_REVIEW_COMMENT: "true"
+          PR_AGENT_REVIEW_INLINE: "true"
+          PR_AGENT_CODE_SUGGESTIONS: "true"
+          PR_AGENT_SUMMARY: "true"
