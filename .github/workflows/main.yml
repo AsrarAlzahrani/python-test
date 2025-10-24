@@ -6,23 +6,20 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write   # مهم جداً لكتابة تعليقات على الـ PR
+  pull-requests: write   # <-- هذا هو المفتاح، بدونه ما يكتب تعليق
 
 jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Run PR Agent
         uses: qodo-ai/pr-agent@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_AGENT_AUTO_REVIEW: "true"        # شغّل المراجعة تلقائياً
-          PR_AGENT_REVIEW_COMMENT: "true"     # يكتب ملخّص في Conversation
-          PR_AGENT_REVIEW_INLINE: "true"      # يكتب تعليقات سطر-بسطر في Files changed
-          PR_AGENT_CODE_SUGGESTIONS: "true"   # يقترح باتشات (اختياري)
-
-
-
-
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} # تأكدي إنه مضاف بالـsecrets
+          PR_AGENT_AUTO_REVIEW: "true"
+          PR_AGENT_REVIEW_COMMENT: "true"
+          PR_AGENT_REVIEW_INLINE: "true"  # يفعّل تعليقات داخل Files changed
