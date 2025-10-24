@@ -9,4 +9,3 @@ def average(nums):
 
 print(average([10, 20, 30]))   
 print(average([5]))            
-
