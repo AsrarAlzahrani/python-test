@@ -1,17 +1,13 @@
-name: GitHub Copilot Code Review
-
+name: PR Agent
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-
 jobs:
   review:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: read
     steps:
-      - name: Run GitHub Copilot Code Review
-        uses: github/copilot-code-review@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3
+      - name: Run PR Agent
+        uses: qodo-ai/pr-agent@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
